@@ -32,24 +32,24 @@ jobs:
     - name: Prepare APK Asset
       run: |
         mkdir -p release-out
-        cp app/build/outputs/apk/debug/app-debug.apk release-out/LiteScreenRecorder-v1.0.0.apk
+        cp app/build/outputs/apk/debug/app-debug.apk release-out/LiteScreenRecorder-Pro-v1.1.0.apk
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: LiteScreenRecorder-v1.0.0-APK
-        path: release-out/LiteScreenRecorder-v1.0.0.apk
+        name: LiteScreenRecorder-Pro-v1.1.0-APK
+        path: release-out/LiteScreenRecorder-Pro-v1.1.0.apk
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v1.0.0
-        name: "Release v1.0.0 - Lightweight Screen Recorder"
+        tag_name: v1.1.0
+        name: "Release v1.1.0 - Floating Controls & In-App Vault"
         body: |
-          ### Release Notes
-          - Native Kotlin Screen Recorder for Android.
-          - Zero ads, no watermarks, low battery overhead.
-          - Download the APK directly from the assets below and install on any Android 7.0+ device.
-        files: release-out/LiteScreenRecorder-v1.0.0.apk
+          ### What's New in v1.1.0:
+          - **Floating Overlay Bubble:** Draggable on-screen widget to Pause, Resume, and Stop recording on the fly.
+          - **In-App Vault Storage:** Recordings are saved securely inside the app by default (no direct clutter in public phone gallery).
+          - **Multi-Select & Bulk Export:** Select All / individual checkboxes to Export to Phone Gallery, Share via WhatsApp/Apps, or Delete in bulk.
+        files: release-out/LiteScreenRecorder-Pro-v1.1.0.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
