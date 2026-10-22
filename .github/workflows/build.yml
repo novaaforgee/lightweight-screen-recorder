@@ -26,34 +26,19 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build Release APK
-      run: ./gradlew assembleRelease --stacktrace
-
-    - name: Sign APK (Debug key for direct installation)
-      uses: r0adkll/sign-android-release@v1
-      id: sign_app
-      with:
-        releaseDirectory: app/build/outputs/apk/release
-        signingKey: ${{ secrets.SIGNING_KEY }}
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        alias: ${{ secrets.ALIAS }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
-      continue-on-error: true
+    - name: Build Debug & Release APK
+      run: ./gradlew assembleDebug --stacktrace
 
     - name: Prepare APK Asset
       run: |
         mkdir -p release-out
-        if [ -f "app/build/outputs/apk/release/app-release-unsigned.apk" ]; then
-          cp app/build/outputs/apk/release/app-release-unsigned.apk release-out/LiteScreenRecorder-v1.0.0.apk
-        elif [ -f "app/build/outputs/apk/release/app-release.apk" ]; then
-          cp app/build/outputs/apk/release/app-release.apk release-out/LiteScreenRecorder-v1.0.0.apk
-        fi
+        cp app/build/outputs/apk/debug/app-debug.apk release-out/LiteScreenRecorder-v1.0.0.apk
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: LiteScreenRecorder-v1.0.0-APK
-        path: release-out/*.apk
+        path: release-out/LiteScreenRecorder-v1.0.0.apk
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
@@ -65,6 +50,6 @@ jobs:
           - Native Kotlin Screen Recorder for Android.
           - Zero ads, no watermarks, low battery overhead.
           - Download the APK directly from the assets below and install on any Android 7.0+ device.
-        files: release-out/*.apk
+        files: release-out/LiteScreenRecorder-v1.0.0.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
