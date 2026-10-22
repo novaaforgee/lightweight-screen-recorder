@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lightweight Recorder</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+    <string name="include_audio">Record Microphone Audio</string>
+    <string name="status_idle">Ready to record screen</string>
+    <string name="status_recording">Recording in progress...</string>
+</resources>
