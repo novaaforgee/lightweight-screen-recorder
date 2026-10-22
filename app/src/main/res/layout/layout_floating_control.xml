@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/floatingRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_floating_bubble"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/btnDragHandle"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="Drag"
+        android:padding="4dp"
+        android:src="@android:drawable/ic_menu_sort_by_size" />
+
+    <TextView
+        android:id="@+id/tvFloatTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
+        android:text="00:00"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/btnFloatPauseResume"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="6dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="Pause/Resume"
+        android:padding="6dp"
+        android:src="@android:drawable/ic_media_pause" />
+
+    <ImageView
+        android:id="@+id/btnFloatStop"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="Stop"
+        android:padding="6dp"
+        android:src="@android:drawable/checkbox_on_background" />
+
+</LinearLayout>
