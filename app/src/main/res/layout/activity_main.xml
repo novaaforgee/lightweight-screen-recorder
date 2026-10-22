@@ -1,105 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
-    android:padding="24dp">
+    android:background="#121212">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Lite Screen Recorder"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Fast • Clean • Zero Watermark"
-        android:textColor="#AAAAAA"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardStatus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:cardBackgroundColor="#1E1E1E"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:strokeColor="#2E2E2E"
-        app:strokeWidth="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
-
+        <!-- Top Header & Rec Controls -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:background="#181818"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="16dp">
 
             <TextView
-                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/status_idle"
+                android:text="Lite Recorder Pro"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvTimer"
+                android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="00:00"
-                android:textColor="#4CAF50"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:layout_marginTop="4dp"
+                android:text="Internal In-App Vault • Floating Controls • No Watermark"
+                android:textColor="#888888"
+                android:textSize="13sp" />
+
+            <!-- Options & Start Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchAudio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Record Audio"
+                    android:textColor="#CCCCCC"
+                    android:textSize="14sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnToggleRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:backgroundTint="#E53935"
+                    android:paddingHorizontal="20dp"
+                    android:text="Start Record"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:cornerRadius="24dp" />
+            </LinearLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/switchAudio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:checked="true"
-        android:text="@string/include_audio"
-        android:textColor="#DDDDDD"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardStatus" />
+        <!-- In-App Vault Top Action Bar -->
+        <LinearLayout
+            android:id="@+id/layoutVaultHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#151515"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnToggleRecord"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="#E53935"
-        android:text="@string/start_recording"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <CheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select All"
+                android:textColor="#DDDDDD"
+                android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- Action buttons: Export to Gallery, Share, Delete -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnExportGallery"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginEnd="6dp"
+                android:text="Export Gallery"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <ImageButton
+                android:id="@+id/btnShareSelected"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="6dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="Share"
+                android:src="@android:drawable/ic_menu_share" />
+
+            <ImageButton
+                android:id="@+id/btnDeleteSelected"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="Delete"
+                android:src="@android:drawable/ic_menu_delete" />
+
+        </LinearLayout>
+
+        <!-- Recordings List -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecordings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                android:paddingBottom="24dp" />
+
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="No recordings yet.\nSaved videos will appear here securely."
+                android:textColor="#555555"
+                android:textSize="14sp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
